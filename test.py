@@ -18,10 +18,29 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ========================================================================
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 
 
 def main():
-    print 'test'
+    train_path = 'D:/data/preliminary_contest_data/adFeature.csv'
+    df = pd.DataFrame(pd.read_csv(train_path))
+
+    # aid  advertiserId  campaignId creativeId  creativeSize
+    # adCategoryId productId  productType
+    # print df.info()
+
+    # 按照advertiserId排序，查看advertiserId对应creativeId个数
+    df = df.sort_values(by=['advertiserId'])
+    # print df.groupby('aid').count() # 173
+    # print df.groupby('advertiserId').count() # 79
+    # print df.groupby('campaignId').count() #138
+    # print df.groupby('creativeId').count() #173
+    print df.describe()
+
+
+
 
 
 if __name__ == '__main__':
